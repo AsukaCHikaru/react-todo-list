@@ -1,0 +1,56 @@
+body{
+  background-color: #333;
+}
+.listWraper{
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+}
+.list{
+  padding: 0.5em;
+  width: 20vw;
+  background-color: #deded3;
+  border-radius: 0.5em;
+  text-align: center;
+}
+.addTaskForm{
+  padding: 0.2em;
+  background-color: #888;
+  border-radius: 0.5em;
+}
+.addTaskBtn{
+  margin-top: 1em;
+}
+.addTaskBtn button{
+  position: relative;
+  height: 5em;
+  width: 5em;
+  border-radius: 50%;    
+  background-color: #777;
+}
+.addTaskBtn button::before, .addTaskBtn button::after{
+  content: '';
+  position: absolute;
+  height: 5em;
+  width: 0.2em;
+  background-color: #fff;
+}
+.addTaskBtn button::before{
+  top: 0;
+  left: 2.4em;
+}
+.addTaskBtn button::after{
+  transform: rotate(90deg);
+  bottom: 0;
+  left: 2.4em;
+}
+.tasks{
+  padding: 0.5em;
+}
+.task{  
+  height: 2em;
+  margin: 0.5em 0;
+  padding-left: 1em;
+  text-align: left;  
+  background-color: #fff;
+}
