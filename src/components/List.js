@@ -25,6 +25,7 @@ class List extends Component{
               <Task
                 key={i}
                 task={task}
+                delTask={this.props.delTask}
               />
             )
         })}

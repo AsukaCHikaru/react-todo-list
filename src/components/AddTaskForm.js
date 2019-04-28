@@ -1,41 +1,57 @@
 import React, { Component } from 'react'
+import TaskNameInput from './TaskNameInput';
+import TaskContextInput from './TaskContextInput';
+import TaskTagInput from './TaskTagInput';
+import calcTaskHash from '../logic/calcTaskHash';
+import calcTag from '../logic/calcTag';
 
 export default class AddTaskForm extends Component {
   constructor(props){
     super(props);
     this.state = {
-      inputVal: '',
+      nameInput: '',
+      tagInput: '',
     }
     this.clickAddBtn = this.clickAddBtn.bind(this)
-    this.updateInputVal = this.updateInputVal.bind(this)
+    this.updateNameInput = this.updateNameInput.bind(this)
+    this.updateTagInput = this.updateTagInput.bind(this)
   }
   clickAddBtn(){
-    if(this.state.inputVal!==''){
-      this.props.addTask({
-        name: this.state.inputVal,
-        time: new Date().toLocaleString(),
-        tag: [],
-      });
+    let newTask = {
+      id: calcTaskHash(),
+      name: this.state.nameInput,
+      time: new Date().toLocaleString(),
+      tag: calcTag(this.state.tagInput),
+    }
+    if(this.state.nameInput!==''){
+      this.props.addTask(newTask);
       this.props.handleAddTaskFormDisplay('hide');
-      this.setState({inputVal: ''});
+      this.setState({nameInput: '', tagInput: ''});
     }
   }
-  updateInputVal(e){
-    this.setState({inputVal: e.target.value})
+  updateNameInput(e){
+    this.setState({nameInput: e.target.value})
+  }
+  updateTagInput(e){
+    this.setState({tagInput: e.target.value})
   }
   render() {
     let style={
-      display: (this.props.show) ? 'block' : 'none'
+      display: (this.props.show) ? 'flex' : 'none'
     }
     return (
       <div 
         className="addTaskForm"
         style={style}
       >
-        <input 
-          type="text"
-          value={this.state.inputVal}
-          onChange={this.updateInputVal}
+        <TaskNameInput 
+          value={this.state.nameInput}
+          updateNameInput={this.updateNameInput} 
+        />
+        <TaskContextInput />
+        <TaskTagInput 
+          value={this.state.tagInput}
+          updateTagInput={this.updateTagInput} 
         />
         <div>
           <button

@@ -7,50 +7,98 @@ body{
   padding: 1em;
 }
 .list{
+  margin: 0 0.5em;
   padding: 0.5em;
   width: 20vw;
   background-color: #deded3;
   border-radius: 0.5em;
   text-align: center;
 }
+.listName{
+  font-size: 2em;
+  font-weight: bold;
+}
 .addTaskForm{
+  display: flex;
+  flex-direction: column;
+  grid-template-rows: 1.5em auto 15%;
+  margin: 0 0.3em;
+  height: 10em;
   padding: 0.2em;
-  background-color: #888;
-  border-radius: 0.5em;
+  background-color: #bbb;
+  /* border-radius: 0.5em; */
+}
+.taskNameInput{    
+  background-color: #bbb;
+  margin: 1% 2%;
+  outline: none;
+  border: none;
+  border-bottom: solid 2px #888;
+  font-size: 1.3em;
+  height: 1.3em;
+  line-height: 1.3em;
+}
+.taskContextInput{  
+  display: block;
+  resize: none;
+  margin: 1% 2%;
+  height: 60%;
+  outline: none;
+  border: none;
+  background-color: #a5a5a5;
+}
+.taskTagInput{
+  background-color: #bbb;
+  margin: 1% 2%;
+  outline: none;
+  border: none;
+  border-bottom: solid 2px #888;
 }
 .addTaskBtn{
-  margin-top: 1em;
+  margin-top: 0.5em;
+  cursor: pointer;
+  font-size: 3em;  
+  color: #999;
 }
-.addTaskBtn button{
-  position: relative;
-  height: 5em;
-  width: 5em;
-  border-radius: 50%;    
-  background-color: #777;
-}
-.addTaskBtn button::before, .addTaskBtn button::after{
-  content: '';
-  position: absolute;
-  height: 5em;
-  width: 0.2em;
-  background-color: #fff;
-}
-.addTaskBtn button::before{
-  top: 0;
-  left: 2.4em;
-}
-.addTaskBtn button::after{
-  transform: rotate(90deg);
-  bottom: 0;
-  left: 2.4em;
+.addTaskBtn:hover{
+  color: #333;
 }
 .tasks{
-  padding: 0.5em;
+  padding: 0.3em;
 }
 .task{  
-  height: 2em;
-  margin: 0.5em 0;
-  padding-left: 1em;
+  display: grid;
+  grid-template-columns: 12% auto 12% 12%;
+  height: 1.5em;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  margin: 0.3em 0;
+  padding-left: 0.5em;
   text-align: left;  
-  background-color: #fff;
+  background-color: #fafafa;
+}
+.task:hover{
+  background-color: #f5ffc4;
+}
+.task svg{
+  cursor: pointer;
+  margin: auto 0.1em;
+}
+.task .checkBtn{
+  color: #adf7ad;
+}
+.task .checkBtn:hover{
+  color: #22ca22;
+}
+.task .editBtn{
+  color: #83aaee;
+}
+.task .editBtn:hover{
+  color: #0c52a8;
+}
+.task .delBtn{
+  color: #999;
+}
+.task .delBtn:hover{
+  color: #2a2a2a;
 }

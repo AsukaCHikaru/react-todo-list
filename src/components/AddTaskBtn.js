@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import './App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class AddTaskBtn extends Component{
   render(){
     return (
-      <div className="addTaskBtn">
-        <button
+      <div>
+        <FontAwesomeIcon 
+          className="addTaskBtn"
+          icon="plus-circle"           
           onClick={() => this.props.handleAddTaskFormDisplay('show')}
-        ></button>
+        />
       </div>
     );
   }
