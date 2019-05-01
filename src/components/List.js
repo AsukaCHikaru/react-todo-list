@@ -11,6 +11,7 @@ class List extends Component{
     this.state = {
       showAddTaskForm: false,      
     };
+    this.isDoneList = this.props.name === 'Done';
     this.handleAddTaskFormDisplay = this.handleAddTaskFormDisplay.bind(this);
   }
   handleAddTaskFormDisplay(param){
@@ -26,11 +27,20 @@ class List extends Component{
                 key={i}
                 task={task}
                 delTask={this.props.delTask}
+                finishTask={this.props.finishTask}
               />
             )
         })}
       </div>
     )
+  }
+  renderAddTaskBtn(){
+    return this.isDoneList ? 
+      null : 
+      <AddTaskBtn 
+        handleAddTaskFormDisplay={this.handleAddTaskFormDisplay}
+      />
+    ;
   }
   render(){
     return (
@@ -42,12 +52,15 @@ class List extends Component{
           handleAddTaskFormDisplay={this.handleAddTaskFormDisplay}          
           addTask={this.props.addTask}
         />
-        <AddTaskBtn 
-          handleAddTaskFormDisplay={this.handleAddTaskFormDisplay}
-        />
+        {this.renderAddTaskBtn()}
       </div>
     );
   }
 }
+
+List.defaultProps = {
+  name: "tag",
+  tasks: []
+};
 
 export default List;

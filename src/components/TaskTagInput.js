@@ -5,7 +5,7 @@ export default class TaskTagInput extends Component {
     return (
       <input 
         className="taskTagInput"
-        placeholder='add tags (use "," to separate tags)'
+        placeholder='add tags (use "," to separate)'
         value={this.props.value}
         onChange={this.props.updateTagInput}
       />

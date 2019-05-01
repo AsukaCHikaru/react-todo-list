@@ -5,7 +5,7 @@ class ListName extends Component{
   render(){
     return (
       <div className="listName">
-        {this.props.name}
+        <h3>{this.props.name}</h3>
       </div>
     );
   }

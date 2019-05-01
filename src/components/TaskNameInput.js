@@ -5,7 +5,7 @@ export default class TaskNameInput extends Component {
     return (
       <input 
         type="text" 
-        placeholder="task name"
+        placeholder="task"
         className="taskNameInput"
         value={this.props.value}
         onChange={this.props.updateNameInput}>

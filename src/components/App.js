@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faTrashAlt, faPencilAlt, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faTrashAlt, faPencilAlt, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 import List from './List';
 import AddTaskBtn from './AddTaskBtn';
@@ -21,8 +21,9 @@ class App extends Component {
         {id: 1, name: 'ALL', tasks: [], }
       ],      
     };    
-    this.addTask = this.addTask.bind(this)
-    this.delTask = this.delTask.bind(this)
+    this.addTask = this.addTask.bind(this);
+    this.delTask = this.delTask.bind(this);
+    this.finishTask = this.finishTask.bind(this);
   }
   addTask(newTask){
     let tags = [...newTask.tag, 'ALL'];
@@ -46,6 +47,21 @@ class App extends Component {
     });
     this.setState({list: currLists})
   }
+  finishTask(taskToFin){
+    let tags = [...taskToFin.tag, 'ALL'];
+    let currLists = [...this.state.list];
+    currLists.forEach((list) => {
+      if(tags.includes(list.name)){
+        list.tasks.forEach((task, i) => {
+          if(task.id === taskToFin.id) list.tasks.splice(i, 1);        
+        });
+      }
+    });
+    if(currLists[0].name !== "Done") currLists.unshift({id: 0, name: 'Done', tasks: [], });
+    taskToFin.tag = ["Done"]
+    currLists[0].tasks.push(taskToFin);
+    this.setState({list: currLists});
+  }
   renderLists(){
     return (
       <div className="listWraper">
@@ -57,6 +73,7 @@ class App extends Component {
               tasks={list.tasks}
               addTask={this.addTask}
               delTask={this.delTask}
+              finishTask={this.finishTask}
             >    
             </List>
           )

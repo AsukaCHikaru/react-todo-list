@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import TaskNameInput from './TaskNameInput';
-import TaskContextInput from './TaskContextInput';
 import TaskTagInput from './TaskTagInput';
 import calcTaskHash from '../logic/calcTaskHash';
 import calcTag from '../logic/calcTag';
@@ -48,7 +47,6 @@ export default class AddTaskForm extends Component {
           value={this.state.nameInput}
           updateNameInput={this.updateNameInput} 
         />
-        <TaskContextInput />
         <TaskTagInput 
           value={this.state.tagInput}
           updateTagInput={this.updateTagInput} 
