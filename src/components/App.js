@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faTrashAlt, faPencilAlt, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTrashAlt, faPencilAlt, faPlusCircle, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 import List from './List';
 import AddTaskBtn from './AddTaskBtn';
-
-import calcLists from '../logic/calcLists';
 
 import './App.css';
 
@@ -18,48 +16,43 @@ class App extends Component {
     super(props);
     this.state = {
       list: [
-        {id: 1, name: 'ALL', tasks: [], }
+        {id: 0, name: 'Done', tasks: [], },
+        {id: 1, name: 'TO DO', tasks: [], },
       ],      
     };    
     this.addTask = this.addTask.bind(this);
+    this.editTask = this.editTask.bind(this);
     this.delTask = this.delTask.bind(this);
     this.finishTask = this.finishTask.bind(this);
   }
   addTask(newTask){
-    let tags = [...newTask.tag, 'ALL'];
     let currLists = [...this.state.list];
-    // If tags contains unexisted list, create it
-    currLists = calcLists(currLists, [...tags]);
-    currLists.forEach((list) => {
-      if(tags.includes(list.name)) list.tasks.push(newTask);  
+    currLists[1].tasks.push(newTask);
+    this.setState({list: currLists});
+  }
+  editTask(taskToEdit){
+    let currLists = [...this.state.list];
+    currLists[1].tasks.forEach((task, i) => {
+      if(task.id === taskToEdit.id) currLists[1].tasks[i] = taskToEdit;
     });
     this.setState({list: currLists})
   }
   delTask(taskToDel){
-    let tags = [...taskToDel.tag, 'ALL'];
     let currLists = [...this.state.list];
-    currLists.forEach((list) => {
-      if(tags.includes(list.name)){
-        list.tasks.forEach((task, i) => {
-          if(task.id === taskToDel.id) list.tasks.splice(i, 1);        
-        });
-      }
+    let list = (taskToDel.status==='todo') ? currLists[1] : currLists[0];
+    list.tasks.forEach((task, i) => {
+      if(task.id === taskToDel.id) list.tasks.splice(i, 1);        
     });
-    this.setState({list: currLists})
+    this.setState({list: currLists});
   }
   finishTask(taskToFin){
-    let tags = [...taskToFin.tag, 'ALL'];
     let currLists = [...this.state.list];
-    currLists.forEach((list) => {
-      if(tags.includes(list.name)){
-        list.tasks.forEach((task, i) => {
-          if(task.id === taskToFin.id) list.tasks.splice(i, 1);        
-        });
-      }
+    let todo = currLists[1];
+    let done = currLists[0];
+    todo.tasks.forEach((task, i) => {
+      if(task.id === taskToFin.id) todo.tasks.splice(i, 1);        
     });
-    if(currLists[0].name !== "Done") currLists.unshift({id: 0, name: 'Done', tasks: [], });
-    taskToFin.tag = ["Done"]
-    currLists[0].tasks.push(taskToFin);
+    done.tasks.push(taskToFin);
     this.setState({list: currLists});
   }
   renderLists(){
@@ -72,6 +65,7 @@ class App extends Component {
               name={list.name}
               tasks={list.tasks}
               addTask={this.addTask}
+              editTask={this.editTask}
               delTask={this.delTask}
               finishTask={this.finishTask}
             >    

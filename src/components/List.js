@@ -26,7 +26,8 @@ class List extends Component{
               <Task
                 key={i}
                 task={task}
-                delTask={this.props.delTask}
+                editTask={this.props.editTask}
+                delTask={this.props.delTask}                
                 finishTask={this.props.finishTask}
               />
             )
@@ -59,7 +60,7 @@ class List extends Component{
 }
 
 List.defaultProps = {
-  name: "tag",
+  name: "list",
   tasks: []
 };
 

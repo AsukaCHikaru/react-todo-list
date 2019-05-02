@@ -8,8 +8,8 @@ export default class TaskNameInput extends Component {
         placeholder="task"
         className="taskNameInput"
         value={this.props.value}
-        onChange={this.props.updateNameInput}>
-      </input>
+        onChange={this.props.updateNameInput}
+      />
     )
   }
 }

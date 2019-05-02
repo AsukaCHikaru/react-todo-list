@@ -7,8 +7,8 @@ it('renders without crashing', () => {
   shallow(<App />);
 });
 
-it('contains list "ALL" in state', () => {
+it('contains list "TO DO" in state', () => {
   const wrapper = shallow(<App />);  
   expect(wrapper.state().list.length).to.be.above(0);
-  expect(wrapper.state().list[0].name).to.equal('ALL');
+  expect(wrapper.state().list[1].name).to.equal('TO DO');
 });

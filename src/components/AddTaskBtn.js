@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class AddTaskBtn extends Component{
   render(){
     return (
-      <div>
+      <div >
         <FontAwesomeIcon 
           className="addTaskBtn"
           icon="plus-circle"           
