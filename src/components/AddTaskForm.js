@@ -10,6 +10,7 @@ export default class AddTaskForm extends Component {
     this.state = {
       nameInput: '',
       tagInput: '',
+      showWarning: false,
     }
     this.clickAddBtn = this.clickAddBtn.bind(this);
     this.updateNameInput = this.updateNameInput.bind(this);
@@ -26,7 +27,9 @@ export default class AddTaskForm extends Component {
     if(this.state.nameInput!==''){
       this.props.addTask(newTask);
       this.props.handleAddTaskFormDisplay('hide');
-      this.setState({nameInput: '', tagInput: ''});
+      this.setState({nameInput: '', tagInput: '', showWarning: false});
+    }else{
+      this.setState({showWarning: true})
     }
   }
   updateNameInput(e){
@@ -46,18 +49,28 @@ export default class AddTaskForm extends Component {
       >
         <TaskNameInput 
           value={this.state.nameInput}
-          updateNameInput={this.updateNameInput} 
+          updateNameInput={this.updateNameInput}
+          submit={this.clickAddBtn}
         />
         <TaskTagInput 
           value={this.state.tagInput}
           updateTagInput={this.updateTagInput} 
+          submit={this.clickAddBtn}
         />
+        <p 
+          className="warning"
+          style={{display: (this.state.showWarning) ? 'inline' : 'none'}}
+        >Task name is needed!</p>
         <div>
           <button
             onClick={this.clickAddBtn}
           >ADD</button>
           <button
-            onClick={() => this.props.handleAddTaskFormDisplay('hide')}
+            onClick={() => {
+              this.setState(
+                {showWarning: false},
+                this.props.handleAddTaskFormDisplay('hide')
+              )}}
           >CANCEL</button>
         </div>
       </div>

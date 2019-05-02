@@ -16,6 +16,7 @@ export default class Task extends Component {
     this.taskIsDone = this.props.task.status==='done';
     this.updateNameInput = this.updateNameInput.bind(this);
     this.updateTagInput = this.updateTagInput.bind(this);
+    this.submitEdit = this.submitEdit.bind(this);
   }
   updateNameInput(e){
     this.setState({nameInput: e.target.value});
@@ -29,6 +30,7 @@ export default class Task extends Component {
         value={this.state.nameInput}
         updateNameInput={this.updateNameInput} 
         defName={this.props.task.name}
+        submit={this.submitEdit}
       /> :
       <h5
         className={this.taskIsDone ? 'done' : ''}
@@ -57,6 +59,7 @@ export default class Task extends Component {
           updateTagInput={this.updateTagInput}
           value={this.state.tagInput}
           defTag={this.props.task.tag.join(", ")}
+          submit={this.submitEdit}
         />
       </h6> :
       <h6 
@@ -69,17 +72,7 @@ export default class Task extends Component {
     return this.state.showEdit ? 
       <div className="submitEdit">
         <button
-          onClick={() => {
-            this.setState({
-              showEdit: false,
-              showDetail: true,
-            }, 
-              this.props.editTask({
-                ...this.props.task, 
-                name: this.state.nameInput,
-                tag: calcTag(this.state.tagInput)})
-            )
-          }}
+          onClick={() => this.submitEdit()}
         >OK</button>
         <button
           onClick={() => {
@@ -93,6 +86,17 @@ export default class Task extends Component {
       </div> : 
       null
     ;
+  }
+  submitEdit(){
+    this.setState({
+      showEdit: false,
+      showDetail: true,
+    }, 
+      this.props.editTask({
+        ...this.props.task, 
+        name: this.state.nameInput,
+        tag: calcTag(this.state.tagInput)})
+    )
   }
   render() {
     return (

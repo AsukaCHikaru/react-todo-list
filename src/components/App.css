@@ -22,10 +22,17 @@ body{
 .addTaskForm{
   display: flex;
   flex-direction: column;
-  grid-template-rows: 1.5em auto 15%;
+  grid-template-rows: 1.5em 1em auto;
   margin: 0 0.3em;
   padding: 0.2em;
-  background-color: #aaa;
+  background-color: #bbb;
+}
+.addTaskForm .warning{
+  margin: 0;
+  color: #ee0000;
+  font-size: 1.2em;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
 }
 .addTaskForm button{
   margin: 0.2em 0.5em;

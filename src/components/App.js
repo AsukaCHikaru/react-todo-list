@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faTrashAlt, faPencilAlt, faPlusCircle, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTrashAlt, faPencilAlt, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 import List from './List';
-import AddTaskBtn from './AddTaskBtn';
 
 import './App.css';
 
