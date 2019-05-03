@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCheck, faTrashAlt, faPencilAlt, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
+import Header from './Header';
 import List from './List';
 
 import './App.css';
@@ -15,13 +16,17 @@ class App extends Component {
     this.state = {
       list: [
         {id: 0, name: 'Done', tasks: [], },
-        {id: 1, name: 'TO DO', tasks: [], },
+        {id: 1, name: 'Todo', tasks: [], },
       ],      
     };    
     this.addTask = this.addTask.bind(this);
     this.editTask = this.editTask.bind(this);
     this.delTask = this.delTask.bind(this);
     this.finishTask = this.finishTask.bind(this);
+  }
+  componentWillMount(){
+    console.log(window.innerWidth);
+    
   }
   addTask(newTask){
     let currLists = [...this.state.list];
@@ -76,6 +81,7 @@ class App extends Component {
   render(){
     return (
       <div className="app">
+        <Header />
         {this.renderLists()}
       </div>
     );

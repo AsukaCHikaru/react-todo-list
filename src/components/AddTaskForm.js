@@ -17,14 +17,14 @@ export default class AddTaskForm extends Component {
     this.updateTagInput = this.updateTagInput.bind(this);
   }
   clickAddBtn(){
-    let newTask = {
-      id: calcTaskHash(),
-      name: this.state.nameInput,
-      status: 'todo',
-      time: new Date().toLocaleString(),
-      tag: calcTag(this.state.tagInput),      
-    }
-    if(this.state.nameInput!==''){
+    if(RegExp(/\w+/).exec(this.state.nameInput)!==null){
+      let newTask = {
+        id: calcTaskHash(),
+        name: this.state.nameInput,
+        status: 'todo',
+        time: new Date().toLocaleString(),
+        tag: calcTag(this.state.tagInput),      
+      }
       this.props.addTask(newTask);
       this.props.handleAddTaskFormDisplay('hide');
       this.setState({nameInput: '', tagInput: '', showWarning: false});
@@ -39,14 +39,12 @@ export default class AddTaskForm extends Component {
     this.setState({tagInput: e.target.value});
   }
   render() {
-    let style={
-      display: (this.props.show) ? 'flex' : 'none'
-    }
     return (
       <div 
         className="addTaskForm"
-        style={style}
+        style={{display: (this.props.show) ? 'flex' : 'none'}}
       >
+        <h2>Add task</h2>
         <TaskNameInput 
           value={this.state.nameInput}
           updateNameInput={this.updateNameInput}

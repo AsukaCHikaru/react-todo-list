@@ -11,7 +11,7 @@ class List extends Component{
     this.state = {
       showAddTaskForm: false,      
     };
-    this.isDoneList = this.props.name === 'Done';
+    this.isTodoList = this.props.name === 'Todo';
     this.handleAddTaskFormDisplay = this.handleAddTaskFormDisplay.bind(this);
   }
   handleAddTaskFormDisplay(param){
@@ -23,7 +23,7 @@ class List extends Component{
       <div className="tasks">
         {this.props.tasks.map((task, i) => {
             return (
-              <Task
+              <Task              
                 key={i}
                 task={task}
                 editTask={this.props.editTask}
@@ -36,11 +36,11 @@ class List extends Component{
     )
   }
   renderAddTaskBtn(){
-    return this.isDoneList ? 
-      null : 
-      <AddTaskBtn 
+    return this.isTodoList ?       
+      <AddTaskBtn         
         handleAddTaskFormDisplay={this.handleAddTaskFormDisplay}
-      />
+      /> :
+      null
     ;
   }
   render(){

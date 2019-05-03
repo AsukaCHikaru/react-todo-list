@@ -33,7 +33,7 @@ export default class Task extends Component {
         submit={this.submitEdit}
       /> :
       <h5
-        className={this.taskIsDone ? 'done' : ''}
+        className={this.taskIsDone ? 'name done' : 'name'}
         onClick={() => this.setState((prevState) => ({
           showDetail: !prevState.showDetail
         }))}
@@ -56,6 +56,7 @@ export default class Task extends Component {
     return this.state.showEdit ?
       <h6>Tags: 
         <TaskTagInput           
+          className="tag"
           updateTagInput={this.updateTagInput}
           value={this.state.tagInput}
           defTag={this.props.task.tag.join(", ")}
@@ -88,15 +89,17 @@ export default class Task extends Component {
     ;
   }
   submitEdit(){
-    this.setState({
-      showEdit: false,
-      showDetail: true,
-    }, 
-      this.props.editTask({
-        ...this.props.task, 
-        name: this.state.nameInput,
-        tag: calcTag(this.state.tagInput)})
-    )
+    if(RegExp(/\w+/).exec(this.state.nameInput)!==null){
+      this.setState({
+        showEdit: false,
+        showDetail: true,
+      }, 
+        this.props.editTask({
+          ...this.props.task, 
+          name: this.state.nameInput,
+          tag: calcTag(this.state.tagInput)})
+      )
+    }
   }
   render() {
     return (
@@ -120,7 +123,7 @@ export default class Task extends Component {
           style={{display: (this.state.showEdit || this.state.showDetail) ? 'grid' : 'none'}}
         >
           <h6 className="time">Time: {this.props.task.time}</h6>
-          {this.renderTag()}          
+          {this.renderTag()}      
         </div>
         {this.renderSubmitEdit()}
       </div>
@@ -129,5 +132,5 @@ export default class Task extends Component {
 }
 
 Task.defaultProps = {
-  task: {name: ""},
+  task: {name: "task name", tag: []},
 };
