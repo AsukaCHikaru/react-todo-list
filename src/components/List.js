@@ -46,7 +46,7 @@ export default class List extends Component{
   }
   render(){
     return (
-      <div className="list">
+      <div className={`list ${this.props.name.toLowerCase()}`}>
         <ListName name={this.props.name} />
         {this.renderTasks()}
         <AddTaskForm 

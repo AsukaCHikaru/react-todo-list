@@ -19,9 +19,19 @@ header{
   margin: 0 0.5em;
   padding: 0.5em;
   width: 30vw;
-  background-color: #deded3;
+  /* background-color: #deded3; */
   border-radius: 0.5em;
   text-align: center;
+}
+.list.todo{
+  background-color: #c1c1b1;
+}
+.list.done{
+  background-color: #6d6d66;
+}
+.list.tag{
+  border-style: dashed;
+  background-color: transparent;
 }
 .listName h3{
   margin: 0;
@@ -34,7 +44,7 @@ header{
   grid-template-rows: 1.5em 1em auto;
   margin: 0 0.3em;
   padding: 0.2em;
-  background-color: #bbb;
+  background-color: #e4ded6;
 }
 .addTaskForm h2{
   margin: 0.2em 0 0 0 ;
@@ -100,7 +110,10 @@ header{
   font-size: 1.5em;
   line-height: 1.5em;
   text-align: left;  
-  background-color: #fafafa;
+  background-color: #e6e6e6;
+}
+.task:hover{
+  background-color: #8f8f8f;
 }
 .task h5{
   margin: 0;
@@ -130,9 +143,6 @@ header{
   grid-area: 2/ 1/ 2/ 2;
 }
 
-.task:hover{
-  background-color: #f5ffc4;
-}
 .task svg{
   margin: auto 0.1em;
   padding: 10%;
@@ -140,10 +150,10 @@ header{
   border-radius: 0.1em;
 }
 .task svg:hover{
-  background: #faf065;
+  background: #cdcaca;
 }
 .task .checkBtn{
-  color: #adf7ad;
+  color: #87e187;
 }
 .task .checkBtn:hover, .task .checkBtn.done{
   color: #009300;
@@ -155,10 +165,10 @@ header{
   color: #0c52a8;
 }
 .task .delBtn{
-  color: #999;
+  color: #414141;
 }
 .task .delBtn:hover{
-  color: #2a2a2a;
+  color: #1a1a1a;
 }
 .task .taskNameInput{
   font-size: 1em;

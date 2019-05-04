@@ -17,6 +17,7 @@ export default class App extends Component {
       list: [
         {id: 0, name: 'Done', tasks: [], },
         {id: 1, name: 'Todo', tasks: [], },
+        {id: 2, name: 'Tag', tasks: [], },
       ],      
     };    
     this.addTask = this.addTask.bind(this);
