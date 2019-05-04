@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 
 export default class TaskNameInput extends Component {
   render() {
@@ -16,3 +17,9 @@ export default class TaskNameInput extends Component {
     )
   }
 }
+
+TaskNameInput.propTypes = {
+  value: PropTypes.string,
+  updateNameInput: PropTypes.func,
+  submit: PropTypes.func,
+};

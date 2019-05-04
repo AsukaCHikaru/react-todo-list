@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+import PropTypes from 'prop-types';
 
-class ListName extends Component{
+export default class ListName extends Component{
   render(){
     return (
       <div className="listName">
@@ -11,4 +11,10 @@ class ListName extends Component{
   }
 }
 
-export default ListName;
+ListName.defaultProps = {
+  name: "task name",
+};
+
+ListName.propTypes = {
+  name: PropTypes.string,
+};

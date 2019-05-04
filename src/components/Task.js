@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import TaskNameInput from './TaskNameInput';
 import TaskTagInput from './TaskTagInput';
 import calcTag from '../logic/calcTag';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class Task extends Component {
   constructor(props){
@@ -96,7 +99,7 @@ export default class Task extends Component {
       }, 
         this.props.editTask({
           ...this.props.task, 
-          name: this.state.nameInput,
+          name: RegExp(/\w+/).exec(this.state.nameInput)[0],
           tag: calcTag(this.state.tagInput)})
       )
     }
@@ -133,4 +136,11 @@ export default class Task extends Component {
 
 Task.defaultProps = {
   task: {name: "task name", tag: []},
+};
+
+Task.propTypes = {
+  task: PropTypes.object.isRequired,
+  editTask: PropTypes.func,
+  delTask: PropTypes.func,
+  finishTask: PropTypes.func,
 };

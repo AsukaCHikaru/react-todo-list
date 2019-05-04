@@ -10,7 +10,7 @@ import './App.css';
 
 library.add(faTrashAlt, faCheck, faPencilAlt, faPlusCircle);
 
-class App extends Component {
+export default class App extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -23,10 +23,6 @@ class App extends Component {
     this.editTask = this.editTask.bind(this);
     this.delTask = this.delTask.bind(this);
     this.finishTask = this.finishTask.bind(this);
-  }
-  componentWillMount(){
-    console.log(window.innerWidth);
-    
   }
   addTask(newTask){
     let currLists = [...this.state.list];
@@ -87,5 +83,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;

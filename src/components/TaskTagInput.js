@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 
 export default class TaskTagInput extends Component {
   render() {
@@ -15,3 +16,9 @@ export default class TaskTagInput extends Component {
     )
   }
 }
+
+TaskTagInput.propTypes = {
+  value: PropTypes.string,
+  updateTagInput: PropTypes.func,
+  submit: PropTypes.func,
+};

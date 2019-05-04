@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
+
 import TaskNameInput from './TaskNameInput';
 import TaskTagInput from './TaskTagInput';
 import calcTaskHash from '../logic/calcTaskHash';
@@ -20,7 +22,7 @@ export default class AddTaskForm extends Component {
     if(RegExp(/\w+/).exec(this.state.nameInput)!==null){
       let newTask = {
         id: calcTaskHash(),
-        name: this.state.nameInput,
+        name: RegExp(/\w+/).exec(this.state.nameInput)[0],
         status: 'todo',
         time: new Date().toLocaleString(),
         tag: calcTag(this.state.tagInput),      
@@ -76,3 +78,12 @@ export default class AddTaskForm extends Component {
   }
 }
 
+AddTaskForm.defaultProps = {
+  show: false,
+};
+
+AddTaskForm.propTypes = {
+  show: PropTypes.bool,
+  handleAddTaskFormDisplay: PropTypes.func,
+  addTask: PropTypes.func,
+};

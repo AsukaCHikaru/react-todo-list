@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import ListName from './ListName';
 import Task from './Task';
 import AddTaskBtn from './AddTaskBtn';
 import AddTaskForm from './AddTaskForm';
-import './App.css';
 
-class List extends Component{
+export default class List extends Component{
   constructor(props){
     super(props);
     this.state = {
@@ -64,4 +65,11 @@ List.defaultProps = {
   tasks: []
 };
 
-export default List;
+List.propTypes = {
+  name: PropTypes.string.isRequired,
+  tasks: PropTypes.array,
+  addTask: PropTypes.func,
+  editTask: PropTypes.func,
+  delTask: PropTypes.func,
+  finishTask: PropTypes.func,
+};
