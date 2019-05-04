@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 import ListName from './ListName';
 import Task from './Task';
-import AddTaskBtn from './AddTaskBtn';
+import MajorBtn from './MajorBtn';
 import AddTaskForm from './AddTaskForm';
+import SearchForm from './SearchForm';
 
 export default class List extends Component{
   constructor(props){
@@ -12,13 +13,11 @@ export default class List extends Component{
     this.state = {
       showAddTaskForm: false,      
     };
-    this.isTodoList = this.props.name === 'Todo';
     this.handleAddTaskFormDisplay = this.handleAddTaskFormDisplay.bind(this);
   }
   handleAddTaskFormDisplay(param){
     this.setState({showAddTaskForm: (param==='show' ? true : false)})
-  }
-  
+  }  
   renderTasks(){
     return (
       <div className="tasks">
@@ -36,25 +35,46 @@ export default class List extends Component{
       </div>
     )
   }
-  renderAddTaskBtn(){
-    return this.isTodoList ?       
-      <AddTaskBtn         
-        handleAddTaskFormDisplay={this.handleAddTaskFormDisplay}
+  renderAddTaskForm(){
+    return (this.props.name==='Todo') ? 
+      <AddTaskForm 
+        show={this.state.showAddTaskForm}
+        handleAddTaskFormDisplay={this.handleAddTaskFormDisplay}          
+        addTask={this.props.addTask}
       /> :
       null
-    ;
+    ;        
+  }
+  renderSearchForm(){
+    return (this.props.name==='Search') ?
+      <SearchForm 
+        searchTask={this.props.searchTask}
+      /> :
+      null
+    ;      
+  }
+  renderMajorBtn(){
+    const majorBtn = {
+      Done: null,
+      Todo: <MajorBtn   
+        type='todo'
+        func={() => this.handleAddTaskFormDisplay('show')}
+      />,
+      Search: <MajorBtn 
+        type='search'
+        func={this.props.clearSearch}
+      />
+    }
+    return majorBtn[this.props.name];
   }
   render(){
     return (
       <div className={`list ${this.props.name.toLowerCase()}`}>
         <ListName name={this.props.name} />
         {this.renderTasks()}
-        <AddTaskForm 
-          show={this.state.showAddTaskForm}
-          handleAddTaskFormDisplay={this.handleAddTaskFormDisplay}          
-          addTask={this.props.addTask}
-        />
-        {this.renderAddTaskBtn()}
+        {this.renderAddTaskForm()}
+        {this.renderSearchForm()}
+        {this.renderMajorBtn()}
       </div>
     );
   }

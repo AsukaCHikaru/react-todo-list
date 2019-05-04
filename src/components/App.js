@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCheck, faTrashAlt, faPencilAlt, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
-
 import Header from './Header';
 import List from './List';
 
 import './App.css';
 
-library.add(faTrashAlt, faCheck, faPencilAlt, faPlusCircle);
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCheck, faTrashAlt, faPencilAlt, faPlusCircle, faMinusCircle, faSearch } from '@fortawesome/free-solid-svg-icons';
+library.add(faTrashAlt, faCheck, faPencilAlt, faPlusCircle, faMinusCircle, faSearch);
 
 export default class App extends Component {
   constructor(props){
@@ -17,13 +16,15 @@ export default class App extends Component {
       list: [
         {id: 0, name: 'Done', tasks: [], },
         {id: 1, name: 'Todo', tasks: [], },
-        {id: 2, name: 'Tag', tasks: [], },
+        {id: 2, name: 'Search', tasks: [], },
       ],      
     };    
     this.addTask = this.addTask.bind(this);
     this.editTask = this.editTask.bind(this);
     this.delTask = this.delTask.bind(this);
     this.finishTask = this.finishTask.bind(this);
+    this.searchTask = this.searchTask.bind(this);
+    this.clearSearch = this.clearSearch.bind(this)
   }
   addTask(newTask){
     let currLists = [...this.state.list];
@@ -55,6 +56,21 @@ export default class App extends Component {
     done.tasks.push(taskToFin);
     this.setState({list: currLists});
   }
+  searchTask(keyword){
+    let currLists = [...this.state.list];
+    let result = [];
+    currLists[1].tasks.forEach((task) => {
+      if(task.name.includes(keyword)||task.tag.includes(keyword))
+        result.push(task);        
+    });
+    currLists[2].tasks = result;
+    this.setState({list: currLists})
+  }
+  clearSearch(){
+    let currLists = [...this.state.list];
+    currLists[2].tasks = []
+    this.setState({list: currLists});
+  }
   renderLists(){
     return (
       <div className="listWraper">
@@ -68,6 +84,8 @@ export default class App extends Component {
               editTask={this.editTask}
               delTask={this.delTask}
               finishTask={this.finishTask}
+              searchTask={this.searchTask}
+              clearSearch={this.clearSearch}
             >    
             </List>
           )

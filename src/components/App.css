@@ -1,5 +1,5 @@
 body{
-  background-color: #333;
+  background-color: #272727;
   cursor: default;
 }
 header{
@@ -7,7 +7,7 @@ header{
   font-size: 2em;
   font-weight: 700;
   color: #eee;
-  background-color: #0c52a8;
+  background-color: #782b14;
   
 }
 .listWraper{
@@ -16,21 +16,23 @@ header{
   padding: 1em;
 }
 .list{
+  display: flex;
+  flex-direction: column;
   margin: 0 0.5em;
   padding: 0.5em;
   width: 30vw;
-  /* background-color: #deded3; */
   border-radius: 0.5em;
   text-align: center;
 }
 .list.todo{
-  background-color: #c1c1b1;
+  background-color: #c1c1af;
 }
 .list.done{
-  background-color: #6d6d66;
+  background-color: #575757;
 }
-.list.tag{
+.list.search{
   border-style: dashed;
+  border-color: #888;
   background-color: transparent;
 }
 .listName h3{
@@ -38,10 +40,11 @@ header{
   font-size: 2em;
   font-weight: bold;
 }
+.list.search .listName{
+  color: #888;
+}
 .addTaskForm{
-  display: flex;
   flex-direction: column;
-  grid-template-rows: 1.5em 1em auto;
   margin: 0 0.3em;
   padding: 0.2em;
   background-color: #e4ded6;
@@ -89,13 +92,29 @@ header{
 .taskTagInput{
   margin: 2% 2% 1% 2%;
 }
-.addTaskBtn{
+.searchForm{
+  font-size: 1.5em;
+}
+.searchForm input{
+  color: #888;
+  font-size: 1em;
+  border: none;
+  border-bottom: solid 2px #888;
+  background-color: inherit;  
+  outline: none;
+}
+.searchForm svg{
+  color: #888;
+  margin: 0 0.3em;
+}
+.majorBtn{
+  /* align-self: flex-end; */
   margin-top: 0.5em;
   cursor: pointer;
   font-size: 3.5em;  
-  color: #ff8940;
+  color: #e97a35;
 }
-.addTaskBtn:hover{
+.majorBtn:hover{
   color: #ff5900;
 }
 .tasks{
