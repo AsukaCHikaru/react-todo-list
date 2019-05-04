@@ -1,4 +1,4 @@
-function calcTaskHash(){
+export default function calcTaskHash(){
   let t = new Date();
   let rng = Math.ceil(Math.random()*1000).toString();
   let hash = 
@@ -11,5 +11,3 @@ function calcTaskHash(){
     rng;
   return hash;         
 }
-
-export default calcTaskHash;

@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import TaskNameInput from './TaskNameInput';
 import TaskTagInput from './TaskTagInput';
 import calcTag from '../logic/calcTag';
+import handleSpace from '../logic/handleSpace';
 
 export default class Task extends Component {
   constructor(props){
@@ -96,10 +97,11 @@ export default class Task extends Component {
       this.setState({
         showEdit: false,
         showDetail: true,
+        nameInput: handleSpace(this.state.nameInput),
       }, 
         this.props.editTask({
           ...this.props.task, 
-          name: RegExp(/\w+/).exec(this.state.nameInput)[0],
+          name: handleSpace(this.state.nameInput),
           tag: calcTag(this.state.tagInput)})
       )
     }

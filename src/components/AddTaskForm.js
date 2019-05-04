@@ -5,6 +5,7 @@ import TaskNameInput from './TaskNameInput';
 import TaskTagInput from './TaskTagInput';
 import calcTaskHash from '../logic/calcTaskHash';
 import calcTag from '../logic/calcTag';
+import handleSpace from '../logic/handleSpace';
 
 export default class AddTaskForm extends Component {
   constructor(props){
@@ -22,7 +23,7 @@ export default class AddTaskForm extends Component {
     if(RegExp(/\w+/).exec(this.state.nameInput)!==null){
       let newTask = {
         id: calcTaskHash(),
-        name: RegExp(/\w+/).exec(this.state.nameInput)[0],
+        name: handleSpace(this.state.nameInput),
         status: 'todo',
         time: new Date().toLocaleString(),
         tag: calcTag(this.state.tagInput),      
