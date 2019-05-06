@@ -112,7 +112,9 @@ export default class Task extends Component {
         <FontAwesomeIcon 
           icon="check" 
           className={this.taskIsDone ? 'checkBtn done' : 'checkBtn'}
-          onClick={() => this.props.finishTask({...this.props.task, status: 'done'})}
+          onClick={() => {
+            if(!this.taskIsDone) this.props.finishTask({...this.props.task, status: 'done'})
+          }}
         />
         {this.renderName()}
         {this.renderEditBtn()}

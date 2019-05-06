@@ -40,9 +40,10 @@ export default class App extends Component {
   }
   delTask(taskToDel){
     let currLists = [...this.state.list];
-    let list = (taskToDel.status==='todo') ? currLists[1] : currLists[0];
-    list.tasks.forEach((task, i) => {
-      if(task.id === taskToDel.id) list.tasks.splice(i, 1);        
+    currLists.forEach((list) => {      
+      list.tasks.forEach((task, i) => {
+        if(task.id === taskToDel.id) list.tasks.splice(i, 1);        
+      });
     });
     this.setState({list: currLists});
   }

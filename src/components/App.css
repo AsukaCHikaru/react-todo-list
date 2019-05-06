@@ -13,6 +13,7 @@ header{
 .listWraper{
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   padding: 1em;
 }
 .list{
@@ -20,6 +21,7 @@ header{
   flex-direction: column;
   margin: 0 0.5em;
   padding: 0.5em;
+  /* min-height: 26vh;  */
   width: 30vw;
   border-radius: 0.5em;
   text-align: center;
