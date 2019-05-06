@@ -18,6 +18,12 @@ export default class List extends Component{
   handleAddTaskFormDisplay(param){
     this.setState({showAddTaskForm: (param==='show' ? true : false)})
   }  
+  renderSearchSumm(){
+    return (this.props.keyword) ? 
+      <h3 className="searchSumm">{this.props.tasks.length} results for "{this.props.keyword}"</h3> :
+      null
+    ;
+  }
   renderTasks(){
     return (
       <div className="tasks">
@@ -71,6 +77,7 @@ export default class List extends Component{
     return (
       <div className={`list ${this.props.name.toLowerCase()}`}>
         <ListName name={this.props.name} />
+        {this.renderSearchSumm()}
         {this.renderTasks()}
         {this.renderAddTaskForm()}
         {this.renderSearchForm()}

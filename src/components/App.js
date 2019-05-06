@@ -16,7 +16,7 @@ export default class App extends Component {
       list: [
         {id: 0, name: 'Done', tasks: [], },
         {id: 1, name: 'Todo', tasks: [], },
-        {id: 2, name: 'Search', tasks: [], },
+        {id: 2, name: 'Search', tasks: [], keyword: null, },
       ],      
     };    
     this.addTask = this.addTask.bind(this);
@@ -64,11 +64,13 @@ export default class App extends Component {
         result.push(task);        
     });
     currLists[2].tasks = result;
+    currLists[2].keyword = keyword;
     this.setState({list: currLists})
   }
   clearSearch(){
     let currLists = [...this.state.list];
     currLists[2].tasks = []
+    currLists[2].keyword= null;
     this.setState({list: currLists});
   }
   renderLists(){
@@ -79,6 +81,7 @@ export default class App extends Component {
             <List
               key={list.id}
               name={list.name}
+              keyword={(list.keyword===null || list.keyword===undefined) ? null : list.keyword}
               tasks={list.tasks}
               addTask={this.addTask}
               editTask={this.editTask}

@@ -92,6 +92,13 @@ header{
 .taskTagInput{
   margin: 2% 2% 1% 2%;
 }
+.searchSumm{
+  margin: 0;
+  margin-top: 0.5em;
+  /* text-align: left; */
+  color: #aaa;
+  font-weight: 400;  
+}
 .searchForm{
   font-size: 1.5em;
 }
