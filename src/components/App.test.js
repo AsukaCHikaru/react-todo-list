@@ -17,7 +17,7 @@ it('contains list "done" in state', () => {
   expect(wrapper.state().list[0].name).to.equal('Done');
 });
 
-it('render 2 lists', () => {
+it('render 3 lists', () => {
   const wrapper = mount(<App />);
-  expect(wrapper.find('.list').length).to.equal(2);
+  expect(wrapper.find('.list').length).to.equal(3);
 });

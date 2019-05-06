@@ -7,6 +7,7 @@ import './App.css';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCheck, faTrashAlt, faPencilAlt, faPlusCircle, faMinusCircle, faSearch } from '@fortawesome/free-solid-svg-icons';
+import handleTask from '../logic/handleTask';
 library.add(faTrashAlt, faCheck, faPencilAlt, faPlusCircle, faMinusCircle, faSearch);
 
 export default class App extends Component {
@@ -26,53 +27,23 @@ export default class App extends Component {
     this.searchTask = this.searchTask.bind(this);
     this.clearSearch = this.clearSearch.bind(this)
   }
-  addTask(newTask){
-    let currLists = [...this.state.list];
-    currLists[1].tasks.push(newTask);
-    this.setState({list: currLists});
+  addTask(taskToAdd){
+    this.setState({list: handleTask.add(this.state, taskToAdd)});
   }
   editTask(taskToEdit){
-    let currLists = [...this.state.list];
-    currLists[1].tasks.forEach((task, i) => {
-      if(task.id === taskToEdit.id) currLists[1].tasks[i] = taskToEdit;
-    });
-    this.setState({list: currLists})
+    this.setState({list: handleTask.edit(this.state, taskToEdit)});
   }
   delTask(taskToDel){
-    let currLists = [...this.state.list];
-    currLists.forEach((list) => {      
-      list.tasks.forEach((task, i) => {
-        if(task.id === taskToDel.id) list.tasks.splice(i, 1);        
-      });
-    });
-    this.setState({list: currLists});
+    this.setState({list: handleTask.del(this.state, taskToDel)});
   }
   finishTask(taskToFin){
-    let currLists = [...this.state.list];
-    let todo = currLists[1];
-    let done = currLists[0];
-    todo.tasks.forEach((task, i) => {
-      if(task.id === taskToFin.id) todo.tasks.splice(i, 1);        
-    });
-    done.tasks.push(taskToFin);
-    this.setState({list: currLists});
+    this.setState({list: handleTask.finish(this.state, taskToFin)});
   }
   searchTask(keyword){
-    let currLists = [...this.state.list];
-    let result = [];
-    currLists[1].tasks.forEach((task) => {
-      if(task.name.includes(keyword)||task.tag.includes(keyword))
-        result.push(task);        
-    });
-    currLists[2].tasks = result;
-    currLists[2].keyword = keyword;
-    this.setState({list: currLists})
+   this.setState({list: handleTask.search(this.state, keyword)});
   }
   clearSearch(){
-    let currLists = [...this.state.list];
-    currLists[2].tasks = []
-    currLists[2].keyword= null;
-    this.setState({list: currLists});
+    this.setState({list: handleTask.clearSearch(this.state)});
   }
   renderLists(){
     return (

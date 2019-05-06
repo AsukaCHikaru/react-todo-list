@@ -25,19 +25,19 @@ it('renders list name correctly', () => {
   expect(wrapper.find('.listName').length).to.equal(1);
 });
 
-it('renders add task button if this is todo list', () => {
+it('renders major button if this is todo list', () => {
   const wrapper = mount(<List name="Todo"/>); 
-  expect(wrapper.find('AddTaskBtn').length).to.equal(1);
+  expect(wrapper.find('MajorBtn').length).to.equal(1);
 });
 
-it('dosent render add task button if this is done list', () => {
+it('dosent render major button if this is done list', () => {
   const wrapper = mount(<List name="Done"/>); 
-  expect(wrapper.find('AddTaskBtn').length).to.equal(0);
+  expect(wrapper.find('MajorBtn').length).to.equal(0);
 });
 
-it('shows add task from when click add task button', () => {
+it('shows add task from when click major button in Todo list', () => {
   const wrapper = mount(<List name="Todo"/>); 
   expect(wrapper.state().showAddTaskForm).to.equal(false);
-  wrapper.find('FontAwesomeIcon.addTaskBtn').simulate('click');
+  wrapper.find('FontAwesomeIcon.majorBtn').simulate('click');
   expect(wrapper.state().showAddTaskForm).to.equal(true);
 });
