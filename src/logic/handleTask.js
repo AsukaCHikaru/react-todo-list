@@ -1,11 +1,15 @@
+function deepClone(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
 const handleTask = {
   add(state, taskToAdd){
-    let currLists = [...state.list];
+    let currLists = deepClone(state.list);
     currLists[1].tasks.push(taskToAdd);
     return currLists;
   },
   edit(state, taskToEdit){
-    let currLists = [...state.list];
+    let currLists = deepClone(state.list);
     currLists.forEach((list) => {      
       list.tasks.forEach((task, i) => {
         if(task.id === taskToEdit.id) list.tasks[i] = taskToEdit;
@@ -14,7 +18,7 @@ const handleTask = {
     return currLists;
   },
   del(state, taskToDel){
-    let currLists = [...state.list];
+    let currLists = deepClone(state.list);
     currLists.forEach((list) => {      
       list.tasks.forEach((task, i) => {
         if(task.id === taskToDel.id) list.tasks.splice(i, 1);        
@@ -23,7 +27,7 @@ const handleTask = {
     return currLists;
   },
   finish(state, taskToFin){
-    let currLists = [...state.list];
+    let currLists = deepClone(state.list);
     let todo = currLists[1];
     let done = currLists[0];
     todo.tasks.forEach((task, i) => {
@@ -33,7 +37,7 @@ const handleTask = {
     return currLists;
   },
   search(state, keyword){
-    let currLists = [...state.list];
+    let currLists = deepClone(state.list);
     let result = [];
     currLists[1].tasks.forEach((task) => {
       if(task.name.includes(keyword)||task.tag.includes(keyword))
@@ -44,7 +48,7 @@ const handleTask = {
     return currLists;
   },
   clearSearch(state){
-    let currLists = [...state.list];
+    let currLists = deepClone(state.list);
     currLists[2].tasks = [];
     currLists[2].keyword = null;
     return currLists;
