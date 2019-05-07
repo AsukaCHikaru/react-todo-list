@@ -1,0 +1,11 @@
+body{
+  background-color: #272727;
+  cursor: default;
+}
+.listWraper{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 1em;
+}
+

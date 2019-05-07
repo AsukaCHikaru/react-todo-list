@@ -1,0 +1,15 @@
+.searchForm{
+  font-size: 1.5em;
+}
+.searchForm input{
+  color: #888;
+  font-size: 1em;
+  border: none;
+  border-bottom: solid 2px #888;
+  background-color: inherit;  
+  outline: none;
+}
+.searchForm svg{
+  color: #888;
+  margin: 0 0.3em;
+}

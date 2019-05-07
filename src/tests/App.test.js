@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from './enzymeSetup';
 import { expect } from 'chai';
-import App from './App';
+import App from '../components/App';
 
 it('renders without crashing', () => {
   shallow(<App />);

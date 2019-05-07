@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import '../style/List.css';
+
 import ListName from './ListName';
 import Task from './Task';
 import MajorBtn from './MajorBtn';
 import AddTaskForm from './AddTaskForm';
+import SearchSumm from './SearchSumm';
 import SearchForm from './SearchForm';
 
 export default class List extends Component{
@@ -20,7 +23,10 @@ export default class List extends Component{
   }  
   renderSearchSumm(){
     return (this.props.keyword) ? 
-      <h3 className="searchSumm">{this.props.tasks.length} results for "{this.props.keyword}"</h3> :
+      <SearchSumm
+        keyword={this.props.keyword}
+        numOfResults={this.props.tasks.length}
+      /> :
       null
     ;
   }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import handleSpace from '../logic/handleSpace';
 
+import '../style/SearchForm.css';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class SearchForm extends Component {

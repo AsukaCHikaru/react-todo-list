@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 
+import '../style/AddTaskForm.css';
+
 import TaskNameInput from './TaskNameInput';
 import TaskTagInput from './TaskTagInput';
 import calcTaskHash from '../logic/calcTaskHash';

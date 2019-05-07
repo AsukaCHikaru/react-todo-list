@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow, mount } from './enzymeSetup';
 import { expect } from 'chai';
-import List from './List';
-import ListName from './ListName';
+import List from '../components/List';
+import ListName from '../components/ListName';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTrashAlt, faPencilAlt, faPlusCircle } from '@fortawesome/free-solid-svg-icons';

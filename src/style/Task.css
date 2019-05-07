@@ -1,0 +1,71 @@
+.tasks{
+  padding: 0.3em;
+}
+.task{  
+  display: grid;
+  grid-template-columns: 12% auto 12% 12%;
+  grid-template-rows: 1.5em auto;
+  margin: 0.3em 0;
+  padding-left: 0.5em;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  text-align: left;  
+  background-color: #e6e6e6;
+}
+.task:hover{
+  background-color: #8f8f8f;
+}
+.task h5{
+  margin: 0;
+  font-size: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+.task h5.done{
+  text-decoration: line-through;
+}
+.task .details{
+  grid-area: 2/ 1/ 2 / span 4;
+  display: grid;
+  grid-template-columns: auto 12%;
+  grid-template-rows: 50% 50%;
+}
+.task .details h6{
+  font-weight: 400;
+  line-height: 2em;
+  font-size: 0.6em;
+  margin: 0;
+}
+.task .details .time{
+  grid-area: 1/ 1/ 1/ span 2;
+}
+.task .details .tag{
+  grid-area: 2/ 1/ 2/ 2;
+}
+.task svg{
+  margin: auto 0.1em;
+  padding: 10%;
+  cursor: pointer;
+  border-radius: 0.1em;
+}
+.task svg:hover{
+  background: #cdcaca;
+}
+.task .checkBtn{
+  color: #87e187;
+}
+.task .checkBtn:hover, .task .checkBtn.done{
+  color: #009300;
+}
+.task .editBtn{
+  color: #83aaee;
+}
+.task .editBtn:hover{
+  color: #0c52a8;
+}
+.task .delBtn{
+  color: #414141;
+}
+.task .delBtn:hover{
+  color: #1a1a1a;
+}

@@ -1,0 +1,7 @@
+.task .taskNameInput{
+  font-size: 1em;
+  border: none;
+  border-bottom: solid #000 2px;
+  outline: none;
+  background-color: inherit;
+}

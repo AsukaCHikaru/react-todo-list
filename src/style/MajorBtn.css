@@ -1,0 +1,10 @@
+.majorBtn{
+  /* align-self: flex-end; */
+  margin-top: 0.5em;
+  cursor: pointer;
+  font-size: 3.5em;  
+  color: #e97a35;
+}
+.majorBtn:hover{
+  color: #ff5900;
+}

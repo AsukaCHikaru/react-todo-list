@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import calcTag from './calcTag';
+import calcTag from '../logic/calcTag';
 
 it('turns string into array splited by ","', () => {
   const rawTags = "tag1, tag2, tag3";

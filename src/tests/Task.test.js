@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow, mount } from './enzymeSetup';
 import { expect } from 'chai';
-import Task from './Task';
+import Task from '../components/Task';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTrashAlt, faPencilAlt } from '@fortawesome/free-solid-svg-icons';

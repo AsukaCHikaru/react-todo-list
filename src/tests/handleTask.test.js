@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import handleTask from './handleTask';
+import handleTask from '../logic/handleTask';
 
 const tasks = [
   {name: 'task 1', tag: ['uno'], id: 190000000001},

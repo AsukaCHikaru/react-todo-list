@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 
+import '../style/TaskTagInput.css';
+
 export default class TaskTagInput extends Component {
   render() {
     return (

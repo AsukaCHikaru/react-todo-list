@@ -1,0 +1,38 @@
+.list{
+  display: flex;
+  flex-direction: column;
+  margin: 0 0.5em;
+  padding: 0.5em;
+  width: 30vw;
+  border-radius: 0.5em;
+  text-align: center;
+}
+.list.todo{
+  background-color: #c1c1af;
+}
+.list.done{
+  background-color: #575757;
+}
+.list.search{
+  border-style: dashed;
+  border-color: #888;
+  background-color: transparent;
+}
+.submitEdit{
+  grid-area: 3/ 1/ 3/ 5;
+  text-align: center;
+  margin: 0.1em 0;
+}
+.submitEdit button{
+  margin: 0.1em 0.5em;
+  font-size: 0.7em;
+  width: 5em;
+  border: solid 1px #555;
+  border-radius: 0.5em;
+  outline: none;
+  background-color: #e9e9e9;  
+  cursor: pointer;
+}
+.submitEdit button:active{
+  background-color: #555;
+}

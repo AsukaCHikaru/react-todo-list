@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import handleSpace from './handleSpace';
+import handleSpace from '../logic/handleSpace';
 
 it('removes spaces before str', () => {
   const str = "   test";

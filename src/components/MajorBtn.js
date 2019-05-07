@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import '../style/MajorBtn.css';
+
 export default class MajorBtn extends Component{
   render(){
     return (
