@@ -13,21 +13,37 @@ library.add(faTrashAlt, faCheck, faPencilAlt, faPlusCircle, faMinusCircle, faSea
 export default class App extends Component {
   constructor(props){
     super(props);
-    this.state = {
+    this.state = {      
       list: [
         {id: 0, name: 'Done', tasks: [], },
         {id: 1, name: 'Todo', tasks: [], },
         {id: 2, name: 'Search', tasks: [], keyword: null, },
       ],      
     };    
+    this.isFirstRender = true;
     this.addTask = this.addTask.bind(this);
     this.editTask = this.editTask.bind(this);
     this.delTask = this.delTask.bind(this);
     this.finishTask = this.finishTask.bind(this);
     this.searchTask = this.searchTask.bind(this);
     this.clearSearch = this.clearSearch.bind(this)
+  }    
+  componentWillMount(){
+    // Placeholder for backend api
+    if(this.isFirstRender){
+      this.isFirstRender = false;
+      if(localStorage.list) {
+        let storagedList = JSON.parse(localStorage.getItem('list'));       
+        this.setState({list: handleTask.clearSearch({list: storagedList})});
+      }
+    }
+  } 
+  componentDidUpdate(){    
+    // Placeholder for backend api    
+    localStorage.setItem('list', JSON.stringify(this.state.list));  
   }
-  addTask(taskToAdd){
+
+  addTask(taskToAdd){    
     this.setState({list: handleTask.add(this.state, taskToAdd)});
   }
   editTask(taskToEdit){
