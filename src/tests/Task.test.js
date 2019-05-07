@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { shallow, mount } from './enzymeSetup';
 import { expect } from 'chai';
+
 import Task from '../components/Task';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -35,13 +35,13 @@ it('toggles task detail when click task name', () => {
   expect(wrapper.state().showDetail).to.equal(false);
 });
 
-it("shows task's create time", () => {
+it("renders task's create time", () => {
   const time = new Date().toLocaleString();
   const wrapper = mount(<Task task={{tag: [], time: time}} />);
   expect(wrapper.find('h6.time').text()).to.equal(`Time: ${time}`);
 });
 
-it("shows task's tags", () => {
+it("renders task's tags", () => {
   const tag = ["uno", "dos", "tres"];
   const wrapper = mount(<Task task={{tag: tag}} />);
   expect(wrapper.find('h6.tag').text()).to.equal(`Tags: ${tag.join(", ")}`);
@@ -56,7 +56,7 @@ it('toggles edit mode when click edit button', () => {
   expect(wrapper.state().showEdit).to.equal(false);
 });
 
-it('shows task name input instead of name in edit mode', () => {
+it('renders task name input instead of name in edit mode', () => {
   const wrapper = mount(<Task />);
   wrapper.find('FontAwesomeIcon.editBtn').simulate('click');
   expect(wrapper.find('h5.name').length).to.equal(0);    
@@ -70,14 +70,14 @@ it("has task's current name in task name input", () => {
   expect(wrapper.find('TaskNameInput').props().value).to.equal(name);
 });
 
-it('shows task tag input instead of tag in edit mode', () => {
+it('renders task tag input instead of tag in edit mode', () => {
   const wrapper = mount(<Task />);
   wrapper.find('FontAwesomeIcon.editBtn').simulate('click');
   expect(wrapper.find('h5.tag').length).to.equal(0);    
   expect(wrapper.find('TaskTagInput').length).to.equal(1);
 });
 
-it("has task's current tag in task tag input", () => {
+it("renders task's current tag in task tag input", () => {
   const wrapper = mount(<Task />);
   let tag = wrapper.props().task.tag.join(", ");
   wrapper.find('FontAwesomeIcon.editBtn').simulate('click');
