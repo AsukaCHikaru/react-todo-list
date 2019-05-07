@@ -1,5 +1,6 @@
 .searchForm{
   font-size: 1.5em;
+  margin-bottom: 0.3em;
 }
 .searchForm input{
   color: #888;
@@ -10,6 +11,10 @@
   outline: none;
 }
 .searchForm svg{
-  color: #888;
   margin: 0 0.3em;
+  cursor: pointer;
+  color: #888;
+}
+.searchForm svg:hover{
+  color: #bbb;
 }

@@ -1,6 +1,6 @@
 .majorBtn{
-  /* align-self: flex-end; */
-  margin-top: 0.5em;
+  align-self: flex-end;
+  margin: 0.1em 0;
   cursor: pointer;
   font-size: 3.5em;  
   color: #e97a35;

@@ -13,28 +13,29 @@
   background-color: #e6e6e6;
 }
 .task:hover{
-  background-color: #8f8f8f;
+  background-color: #d2d2d2;
 }
-.task h5{
+.task .name{
   margin: 0;
   font-size: inherit;
   font-weight: 500;
   cursor: pointer;
 }
-.task h5.done{
+.task .name.done{
   text-decoration: line-through;
 }
 .task .details{
-  grid-area: 2/ 1/ 2 / span 4;
   display: grid;
+  grid-area: 2/ 1/ 2 / span 4;
   grid-template-columns: auto 12%;
   grid-template-rows: 50% 50%;
+  margin-bottom: 0.1em;
 }
 .task .details h6{
   font-weight: 400;
-  line-height: 2em;
+  line-height: 1.5em;
   font-size: 0.6em;
-  margin: 0;
+  margin: 0.2em 0;
 }
 .task .details .time{
   grid-area: 1/ 1/ 1/ span 2;
@@ -49,10 +50,10 @@
   border-radius: 0.1em;
 }
 .task svg:hover{
-  background: #cdcaca;
+  background: #e8e8e8;
 }
 .task .checkBtn{
-  color: #87e187;
+  color: #6dd26d;
 }
 .task .checkBtn:hover, .task .checkBtn.done{
   color: #009300;
@@ -64,7 +65,7 @@
   color: #0c52a8;
 }
 .task .delBtn{
-  color: #414141;
+  color: #575757;
 }
 .task .delBtn:hover{
   color: #1a1a1a;

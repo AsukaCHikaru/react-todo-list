@@ -1,17 +1,22 @@
 .list{
   display: flex;
   flex-direction: column;
+  align-content: flex-start;
   margin: 0 0.5em;
   padding: 0.5em;
   width: 30vw;
+  min-height: 20vh;
   border-radius: 0.5em;
   text-align: center;
+  border: solid 3px;
 }
 .list.todo{
+  border-color: #c1c1af;
   background-color: #c1c1af;
 }
 .list.done{
-  background-color: #575757;
+  border-color: #606060;
+  background-color: #606060;
 }
 .list.search{
   border-style: dashed;

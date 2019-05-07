@@ -1,8 +1,10 @@
 .task .taskTagInput{
-  width: 50%;
+  margin: 0;
+  width: 70%;
   border: none;
   border-bottom: solid #000 1px;
   outline: none;
+  font-size: 1em;
   background-color: inherit;
 }
 .taskTagInput{
