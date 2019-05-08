@@ -8,3 +8,19 @@
 .majorBtn:hover{
   color: #ff5900;
 }
+
+@media screen and (max-width: 1200px){
+  .majorBtn{
+    font-size: 3.8em;
+  }
+}
+@media screen and (max-width: 768px){
+  .majorBtn{
+    font-size: 4.5em;
+  }
+}
+@media screen and (max-width: 420px){
+  .majorBtn{
+    font-size: 5em;
+  }
+}

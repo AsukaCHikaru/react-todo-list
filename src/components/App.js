@@ -5,6 +5,7 @@ import List from './List';
 
 import getUserData from '../logic/getUserData';
 import updateUserData from '../logic/updateUserData';
+import checkBreakpoints from '../logic/checkBreakpoints';
 
 import '../style/App.css';
 
@@ -22,7 +23,9 @@ export default class App extends Component {
         {id: 0, name: 'Done', tasks: [], },
         {id: 1, name: 'Todo', tasks: [], },
         {id: 2, name: 'Search', tasks: [], keyword: null, },
-      ],      
+      ],     
+      width: window.innerWidth,
+      selectedList: 1,
     };    
     this.isFirstRender = this.state.userId===null;
   }    
@@ -32,7 +35,18 @@ export default class App extends Component {
   componentDidUpdate(){        
     updateUserData(this.state);
   }
-
+  componentDidMount(){
+    window.addEventListener('resize', this.updateAppWidth);
+  }
+  componentWillUnmount(){
+    window.removeEventListener('resize', this.updateAppWidth);
+  }
+  updateAppWidth = () => {
+    if(checkBreakpoints(this.state, window.innerWidth)) this.setState({width: window.innerWidth})
+  }
+  updateSelectedList = (newList) => {
+    this.setState({selectedList: newList});
+  }
   addTask = (taskToAdd) => {    
     this.setState({list: handleTask.add(this.state, taskToAdd)});
   }
@@ -52,9 +66,10 @@ export default class App extends Component {
     this.setState({list: handleTask.clearSearch(this.state)});
   }
   renderLists(){
-    return (
-      <div className="listWraper">
-        {this.state.list.map((list) => {
+    let node;
+    if(this.state.width > 768){
+      node = 
+        this.state.list.map((list) => {
           return (
             <List
               key={list.id}
@@ -70,14 +85,38 @@ export default class App extends Component {
             >    
             </List>
           )
-        })}
+        })
+      ;  
+    }else{
+      const list = this.state.list[this.state.selectedList];
+      node = <List
+        key={this.state.selectedList}
+        name={list.name}
+        keyword={(this.state.list.keyword===null || list.keyword===undefined) ? null : list.keyword}
+        tasks={list.tasks}
+        addTask={this.addTask}
+        editTask={this.editTask}
+        delTask={this.delTask}
+        finishTask={this.finishTask}
+        searchTask={this.searchTask}
+        clearSearch={this.clearSearch}
+      >    
+      </List>
+    }
+    return (
+      <div className="listWraper" >
+      {node}
       </div>
-    )    
+    );
   }
   render(){
     return (
       <div className="app">
-        <Header />
+        <Header 
+          width={this.state.width} 
+          selectedList={this.state.selectedList}
+          updateSelectedList={this.updateSelectedList}
+        />
         {this.renderLists()}
       </div>
     );

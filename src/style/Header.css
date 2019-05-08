@@ -1,7 +1,32 @@
 header{
+  display: flex;
+  justify-content: space-between;
   padding-left: 1vw;
   font-size: 2em;
   font-weight: 700;
   color: #eee;
   background-color: #782b14; 
 }
+.rwdBtn{
+  display: inline-block;
+  font-size: 0.6em;
+  height: 100%;
+  margin: auto 0;  
+}
+.rwdBtn button{
+  margin: auto 0.2em;
+  outline: none;
+  border: solid 1px #000;
+  font-size: inherit;
+  background-color: #b38e16;
+}
+.rwdBtn button.pressed{
+  font-weight: 700;
+  background-color: #eee;
+}
+
+@media screen and (max-width: 1200px){
+  header{
+    font-size: 2.5em;
+  }
+} 

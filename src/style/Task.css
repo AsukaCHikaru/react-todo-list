@@ -3,7 +3,7 @@
 }
 .task{  
   display: grid;
-  grid-template-columns: 12% auto 12% 12%;
+  grid-template-columns: 2em auto 2em 2em;
   grid-template-rows: 1.5em auto;
   margin: 0.3em 0;
   padding-left: 0.5em;
@@ -75,4 +75,17 @@
 }
 .task .delBtn:hover{
   color: #1a1a1a;
+}
+
+@media screen and (max-width:1200px){
+  .task{
+    font-size: 1.7em;
+    grid-template-columns: 1.5em auto 1.5em 1.5em;
+  }
+}
+@media screen and (max-width:768px){
+  .task{
+    font-size: 2.3em;
+    grid-template-columns: 2em auto 2em 2em;
+  }
 }

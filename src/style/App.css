@@ -8,3 +8,24 @@ body{
   align-items: flex-start;
   padding: 1em;
 }
+
+@media screen and (max-width: 1200px){
+  body{
+    font-size: 12px;
+  }
+} 
+
+@media screen and (max-width: 768px){
+  body{
+    font-size: 11px;
+  }
+  .listWraper{
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 420px){
+  body{
+    font-size: 10px;
+  }
+}

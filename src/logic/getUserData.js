@@ -9,6 +9,7 @@ function getUserData() {
     let state = JSON.parse(localStorage.getItem('state'));
     // Not showing Search result when reloading app
     state.list = handleTask.clearSearch(state);
+    state.selectedList = 1;
     return state;
   }
   else{

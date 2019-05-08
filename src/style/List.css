@@ -43,3 +43,9 @@
 .submitEdit button:active{
   background-color: #555;
 }
+
+@media screen and (max-width: 1200px){
+  .list{
+    width: 90vw;
+  }
+}

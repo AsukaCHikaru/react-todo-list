@@ -3,11 +3,12 @@
   margin-bottom: 0.3em;
 }
 .searchForm input{
-  color: #888;
   font-size: 1em;
+  width: 70%;
   border: none;
   border-bottom: solid 2px #888;
   background-color: inherit;  
+  color: #888;
   outline: none;
 }
 .searchForm svg{
