@@ -37,9 +37,9 @@ export default class List extends Component{
               <Task              
                 key={i}
                 task={task}
-                editTask={this.props.editTask}
-                delTask={this.props.delTask}                
-                finishTask={this.props.finishTask}
+                editTask={this.props.handleTask.editTask}
+                delTask={this.props.handleTask.delTask}                
+                finishTask={this.props.handleTask.finishTask}
               />
             )
         })}
@@ -51,7 +51,7 @@ export default class List extends Component{
       <AddTaskForm 
         show={this.state.showAddTaskForm}
         handleAddTaskFormDisplay={this.handleAddTaskFormDisplay}          
-        addTask={this.props.addTask}
+        addTask={this.props.handleTask.addTask}
       /> :
       null
     ;        
@@ -59,7 +59,7 @@ export default class List extends Component{
   renderSearchForm(){
     return (this.props.name==='Search') ?
       <SearchForm 
-        searchTask={this.props.searchTask}
+        searchTask={this.props.handleTask.searchTask}
       /> :
       null
     ;      
@@ -73,7 +73,7 @@ export default class List extends Component{
       />,
       Search: <MajorBtn 
         type='search'
-        func={this.props.clearSearch}
+        func={this.props.handleTask.clearSearch}
       />
     }
     return majorBtn[this.props.name];
@@ -94,14 +94,12 @@ export default class List extends Component{
 
 List.defaultProps = {
   name: "list",
-  tasks: []
+  tasks: [],
+  handleTask: {},
 };
 
 List.propTypes = {
   name: PropTypes.string.isRequired,
   tasks: PropTypes.array,
-  addTask: PropTypes.func,
-  editTask: PropTypes.func,
-  delTask: PropTypes.func,
-  finishTask: PropTypes.func,
+  handleTask: PropTypes.object,
 };

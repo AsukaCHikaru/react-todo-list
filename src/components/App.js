@@ -28,6 +28,14 @@ export default class App extends Component {
       selectedList: 1,
     };    
     this.isFirstRender = this.state.userId===null;
+    this.handleTask = {
+      addTask: (taskToAdd) => this.setState({list: handleTask.add(this.state, taskToAdd)}),
+      editTask: (taskToEdit) => this.setState({list: handleTask.edit(this.state, taskToEdit)}),
+      delTask: (taskToDel) => this.setState({list: handleTask.del(this.state, taskToDel)}),
+      finishTask: (taskToFin) => this.setState({list: handleTask.finish(this.state, taskToFin)}),
+      searchTask: (keyword) => this.setState({list: handleTask.search(this.state, keyword)}),
+      clearSearch: () => this.setState({list: handleTask.clearSearch(this.state)}),
+    };
   }    
   componentWillMount(){
     if(this.isFirstRender) this.setState(getUserData(), () => updateUserData(this.state));
@@ -47,24 +55,6 @@ export default class App extends Component {
   updateSelectedList = (newList) => {
     this.setState({selectedList: newList});
   }
-  addTask = (taskToAdd) => {    
-    this.setState({list: handleTask.add(this.state, taskToAdd)});
-  }
-  editTask = (taskToEdit) => {
-    this.setState({list: handleTask.edit(this.state, taskToEdit)});
-  }
-  delTask = (taskToDel) => {
-    this.setState({list: handleTask.del(this.state, taskToDel)});
-  }
-  finishTask = (taskToFin) => {
-    this.setState({list: handleTask.finish(this.state, taskToFin)});
-  }
-  searchTask = (keyword) => {
-   this.setState({list: handleTask.search(this.state, keyword)});
-  }
-  clearSearch = () => {
-    this.setState({list: handleTask.clearSearch(this.state)});
-  }
   renderLists(){
     let node;
     if(this.state.width > 768){
@@ -76,12 +66,7 @@ export default class App extends Component {
               name={list.name}
               keyword={(list.keyword===null || list.keyword===undefined) ? null : list.keyword}
               tasks={list.tasks}
-              addTask={this.addTask}
-              editTask={this.editTask}
-              delTask={this.delTask}
-              finishTask={this.finishTask}
-              searchTask={this.searchTask}
-              clearSearch={this.clearSearch}
+              handleTask={this.handleTask}
             >    
             </List>
           )
@@ -94,12 +79,7 @@ export default class App extends Component {
         name={list.name}
         keyword={(this.state.list.keyword===null || list.keyword===undefined) ? null : list.keyword}
         tasks={list.tasks}
-        addTask={this.addTask}
-        editTask={this.editTask}
-        delTask={this.delTask}
-        finishTask={this.finishTask}
-        searchTask={this.searchTask}
-        clearSearch={this.clearSearch}
+        handleTask={this.handleTask}
       >    
       </List>
     }
