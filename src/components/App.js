@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import Header from './Header';
 import List from './List';
 
+import getUserData from '../logic/getUserData';
+import updateUserData from '../logic/updateUserData';
+
 import '../style/App.css';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -14,13 +17,14 @@ export default class App extends Component {
   constructor(props){
     super(props);
     this.state = {      
+      userId: null,
       list: [
         {id: 0, name: 'Done', tasks: [], },
         {id: 1, name: 'Todo', tasks: [], },
         {id: 2, name: 'Search', tasks: [], keyword: null, },
       ],      
     };    
-    this.isFirstRender = true;
+    this.isFirstRender = this.state.userId===null;
     this.addTask = this.addTask.bind(this);
     this.editTask = this.editTask.bind(this);
     this.delTask = this.delTask.bind(this);
@@ -29,18 +33,10 @@ export default class App extends Component {
     this.clearSearch = this.clearSearch.bind(this)
   }    
   componentWillMount(){
-    // Placeholder for backend api
-    if(this.isFirstRender){
-      this.isFirstRender = false;
-      if(localStorage.list) {
-        let storagedList = JSON.parse(localStorage.getItem('list'));       
-        this.setState({list: handleTask.clearSearch({list: storagedList})});
-      }
-    }
+    if(this.isFirstRender) this.setState(getUserData(), () => updateUserData(this.state));
   } 
-  componentDidUpdate(){    
-    // Placeholder for backend api    
-    localStorage.setItem('list', JSON.stringify(this.state.list));  
+  componentDidUpdate(){        
+    updateUserData(this.state);
   }
 
   addTask(taskToAdd){    
