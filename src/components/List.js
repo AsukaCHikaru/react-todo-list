@@ -16,9 +16,8 @@ export default class List extends Component{
     this.state = {
       showAddTaskForm: false,      
     };
-    this.handleAddTaskFormDisplay = this.handleAddTaskFormDisplay.bind(this);
   }
-  handleAddTaskFormDisplay(param){
+  handleAddTaskFormDisplay = (param) => {
     this.setState({showAddTaskForm: (param==='show' ? true : false)})
   }  
   renderSearchSumm(){

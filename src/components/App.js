@@ -25,12 +25,6 @@ export default class App extends Component {
       ],      
     };    
     this.isFirstRender = this.state.userId===null;
-    this.addTask = this.addTask.bind(this);
-    this.editTask = this.editTask.bind(this);
-    this.delTask = this.delTask.bind(this);
-    this.finishTask = this.finishTask.bind(this);
-    this.searchTask = this.searchTask.bind(this);
-    this.clearSearch = this.clearSearch.bind(this)
   }    
   componentWillMount(){
     if(this.isFirstRender) this.setState(getUserData(), () => updateUserData(this.state));
@@ -39,22 +33,22 @@ export default class App extends Component {
     updateUserData(this.state);
   }
 
-  addTask(taskToAdd){    
+  addTask = (taskToAdd) => {    
     this.setState({list: handleTask.add(this.state, taskToAdd)});
   }
-  editTask(taskToEdit){
+  editTask = (taskToEdit) => {
     this.setState({list: handleTask.edit(this.state, taskToEdit)});
   }
-  delTask(taskToDel){
+  delTask = (taskToDel) => {
     this.setState({list: handleTask.del(this.state, taskToDel)});
   }
-  finishTask(taskToFin){
+  finishTask = (taskToFin) => {
     this.setState({list: handleTask.finish(this.state, taskToFin)});
   }
-  searchTask(keyword){
+  searchTask = (keyword) => {
    this.setState({list: handleTask.search(this.state, keyword)});
   }
-  clearSearch(){
+  clearSearch = () => {
     this.setState({list: handleTask.clearSearch(this.state)});
   }
   renderLists(){

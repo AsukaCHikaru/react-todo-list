@@ -17,11 +17,8 @@ export default class AddTaskForm extends Component {
       tagInput: '',
       showWarning: false,
     }
-    this.clickAddBtn = this.clickAddBtn.bind(this);
-    this.updateNameInput = this.updateNameInput.bind(this);
-    this.updateTagInput = this.updateTagInput.bind(this);
   }
-  clickAddBtn(){
+  clickAddBtn = () => {
     if(RegExp(/\w+/).exec(this.state.nameInput)!==null){
       let newTask = {
         id: calcTaskHash(),
@@ -37,10 +34,10 @@ export default class AddTaskForm extends Component {
       this.setState({showWarning: true})
     }
   }
-  updateNameInput(e){
+  updateNameInput = (e) => {
     this.setState({nameInput: e.target.value});
   }
-  updateTagInput(e){
+  updateTagInput = (e) => {
     this.setState({tagInput: e.target.value});
   }
   render() {

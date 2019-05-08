@@ -20,14 +20,11 @@ export default class Task extends Component {
       tagInput: this.props.task.tag.join(", "),
     };
     this.taskIsDone = this.props.task.status==='done';
-    this.updateNameInput = this.updateNameInput.bind(this);
-    this.updateTagInput = this.updateTagInput.bind(this);
-    this.submitEdit = this.submitEdit.bind(this);
   }
-  updateNameInput(e){
+  updateNameInput = (e) => {
     this.setState({nameInput: e.target.value});
   }
-  updateTagInput(e){
+  updateTagInput = (e) => {
     this.setState({tagInput: e.target.value});
   }
   renderName(){
@@ -94,7 +91,7 @@ export default class Task extends Component {
       null
     ;
   }
-  submitEdit(){
+  submitEdit = () => {
     if(RegExp(/\w+/).exec(this.state.nameInput)!==null){
       this.setState({
         showEdit: false,

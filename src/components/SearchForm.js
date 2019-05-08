@@ -11,9 +11,8 @@ export default class SearchForm extends Component {
     this.state = {
       searchInput: '',
     };
-    this.updateSearchInput = this.updateSearchInput.bind(this)
   }
-  updateSearchInput(e){
+  updateSearchInput = (e) => {
     this.setState({searchInput: e.target.value});
   }
   startSearch(){
