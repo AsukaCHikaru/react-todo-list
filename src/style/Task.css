@@ -12,8 +12,14 @@
   text-align: left;  
   background-color: #e6e6e6;
 }
-.task:hover{
-  background-color: #d2d2d2;
+.list.todo .task:hover{
+  box-shadow: 0 0.1em 0.1em 0.1em #888;
+}
+.list.done .task:hover{
+  box-shadow: 0 0.1em 0.1em 0.1em #333;
+}
+.list.search .task:hover{
+  box-shadow: 0 0.1em 0.1em 0.1em #000;
 }
 .task .name{
   margin: 0;

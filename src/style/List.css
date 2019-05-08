@@ -13,10 +13,12 @@
 .list.todo{
   border-color: #c1c1af;
   background-color: #c1c1af;
+  box-shadow: 0.2em 0.2em 0.2em 0.1em #000;
 }
 .list.done{
   border-color: #606060;
   background-color: #606060;
+  box-shadow: 0.2em 0.2em 0.2em 0.1em #000;
 }
 .list.search{
   border-style: dashed;
