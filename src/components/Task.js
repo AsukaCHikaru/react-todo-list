@@ -19,7 +19,6 @@ export default class Task extends Component {
       nameInput: this.props.task.name,
       tagInput: this.props.task.tag.join(", "),
     };
-    this.taskIsDone = this.props.task.status==='done';
   }
   updateNameInput = (e) => {
     this.setState({nameInput: e.target.value});
@@ -36,7 +35,7 @@ export default class Task extends Component {
         submit={this.submitEdit}
       /> :
       <h5
-        className={this.taskIsDone ? 'name done' : 'name'}
+        className={this.props.task.status==='done' ? 'name done' : 'name'}
         onClick={() => this.setState((prevState) => ({
           showDetail: !prevState.showDetail
         }))}
@@ -44,7 +43,7 @@ export default class Task extends Component {
     ;
   }
   renderEditBtn(){
-    return this.taskIsDone ? 
+    return this.props.task.status==='done' ? 
       <span></span> : 
       <FontAwesomeIcon 
         icon="pencil-alt" 
@@ -110,9 +109,9 @@ export default class Task extends Component {
       <div className="task" >
         <FontAwesomeIcon 
           icon="check" 
-          className={this.taskIsDone ? 'checkBtn done' : 'checkBtn'}
+          className={this.props.task.status==='done' ? 'checkBtn done' : 'checkBtn'}
           onClick={() => {
-            if(!this.taskIsDone) this.props.finishTask({...this.props.task, status: 'done'})
+            if(this.props.task.status==='todo') this.props.finishTask({...this.props.task, status: 'done'})
           }}
         />
         {this.renderName()}
